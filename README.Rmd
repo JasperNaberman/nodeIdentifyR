@@ -28,10 +28,3 @@ You can install the development version of nodeIdentifyR with help from the devt
 ``` r
 devtools::install_github("JasperNaberman/nodeIdentifyR")
 ```
-
-And the development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("devtools")
-devtools::install_github("JasperNaberman/nodeIdentifyR")
-```
