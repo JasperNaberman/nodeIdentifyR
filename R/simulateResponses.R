@@ -25,22 +25,22 @@ simulateResponses <- function(edge_weights, thresholds, perturbation_direction, 
             perturbation <- thresholds
 
             if (perturbation_direction == "positive") {
-                perturbation[i] <- thresholds[i] + amount_of_SDs_perturbation * sd(thresholds)
+                perturbation[i] <- thresholds[i] + amount_of_SDs_perturbation * stats::sd(thresholds)
             } else if (perturbation_direction == "negative") {
-                perturbation[i] <- thresholds[i] - amount_of_SDs_perturbation * sd(thresholds)
+                perturbation[i] <- thresholds[i] - amount_of_SDs_perturbation * stats::sd(thresholds)
             }
 
-            IsingModelState <- IsingSampler(1000, edge_weights,
-                                            perturbation,
-                                            responses = c(0L, 1L))
+            IsingModelState <- IsingSampler::IsingSampler(1000, edge_weights,
+                                                          perturbation,
+                                                          responses = c(0L, 1L))
             IsingSamples[[i]] <- IsingModelState
         }
 
         # sample an Ising model state with the original thresholds
         if (i == length(IsingSamples)) {
-            IsingModelState <- IsingSampler(1000, edge_weights,
-                                            thresholds,
-                                            responses = c(0L, 1L))
+            IsingModelState <- IsingSampler::IsingSampler(1000, edge_weights,
+                                                          thresholds,
+                                                          responses = c(0L, 1L))
             IsingSamples[[i]] <- IsingModelState
         }
     }
