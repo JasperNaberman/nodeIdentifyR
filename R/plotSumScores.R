@@ -1,6 +1,6 @@
 #' Plot Sum Scores
 #'
-#' plots the inputted sum scores data.frames as a lineplot with conficence intervalss
+#' Plots the inputted sum scores data.frames as a lineplot with conficence intervalss
 #'
 #' @param healthy_sum_score_long a data.frame containing sum scores
 #'
