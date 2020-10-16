@@ -13,7 +13,7 @@ plotSumScores(healthy_sum_score_long)
 a ggline line plot
 }
 \description{
-plots the inputted sum scores data.frames as a lineplot with conficence intervalss
+Plots the inputted sum scores data.frames as a lineplot with conficence intervalss
 }
 \examples{
 # plotSumScores(LongFormatSumScoreDataframe)
