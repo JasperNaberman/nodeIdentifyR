@@ -4,7 +4,7 @@
 #'
 #' @param Ising_samples a list containing dataframes with binary responses
 #'
-#' @return a list containing vectors of sum scores
+#' @return A list containing vectors of sum scores.
 #' @export
 #'
 #' @examples

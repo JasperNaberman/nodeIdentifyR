@@ -4,7 +4,7 @@
 #'
 #' @param healthy_sum_score_long a data.frame containing sum scores
 #'
-#' @return a ggline line plot
+#' @return A ggline line plot, including confidence intervals of the mean value per node.
 #' @export
 #'
 #' @examples

@@ -7,7 +7,7 @@
 #' @param perturbation_direction a string specifying a perturbation direction. Choose between "positive" (+) and "negative" (-).
 #' @param amount_of_SDs_perturbation an integer specifying with how many standard deviations of the threshold distribution to perturbate the threshold values.
 #'
-#' @return a data.frame containing simulated binary responses
+#' @return A data.frame structure containing simulated binary responses.
 #' @export
 #'
 #' @examples

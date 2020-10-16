@@ -4,7 +4,7 @@
 #' 
 #' @param sum_Ising_samples a list containing vectors of sum scores
 #'
-#' @return a data.frame object in long format
+#' @return A data.frame structure in long format
 #' @export
 #'
 #' @examples
