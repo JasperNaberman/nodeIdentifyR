@@ -19,5 +19,15 @@ prepareDFforPlottingAndANOVA <- function(sum_Ising_samples) {
         sumIsingSamplesLong <- rbind(sumIsingSamplesLong, df)
     }
     
+    sumIsingSamplesLong <- as.data.table(sumIsingSamplesLong)
+    orderedSumIsingSamplesLong <- sumIsingSamplesLong[, .(meanSumscore = mean(sumscore)), .(sample)]
+    setorder(orderedSumIsingSamplesLong, -meanSumscore)
+    
+    orderNames <- orderedSumIsingSamplesLong[sample != "original", sample]
+    orderNames <- c("original", orderNames)
+    
+    sumIsingSamplesLong <- sumIsingSamplesLong %>%
+        arrange(factor(sample, levels = orderNames))
+    
     return(sumIsingSamplesLong)
 }
