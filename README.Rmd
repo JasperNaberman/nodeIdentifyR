@@ -29,4 +29,5 @@ You can install the development version of nodeIdentifyR with help from the devt
 library(devtools)
 
 devtools::install_github("JasperNaberman/nodeIdentifyR")
+library(nodeIdentifyR)
 ```

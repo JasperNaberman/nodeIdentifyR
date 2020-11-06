@@ -23,4 +23,5 @@ the devtools-package by running the following code in your R console:
 library(devtools)
 
 devtools::install_github("JasperNaberman/nodeIdentifyR")
+library(nodeIdentifyR)
 ```
