@@ -15,28 +15,28 @@ prepareDFforPlottingAndANOVA <- function(sum_Ising_samples) {
     sumIsingSamplesLong <- data.frame(sumscore = double(), sample = character())
     for (i in 1:length(sum_Ising_samples)) {
         df <- data.frame(sumscore = sum_Ising_samples[[i]],
-                         sample = rep(names(sum_Ising_samples)[i], 1000))
+                         sample = rep(base::names(sum_Ising_samples)[i], 1000))
         sumIsingSamplesLong <- rbind(sumIsingSamplesLong, df)
     }
     
     sumIsingSamplesLong <- as.data.table(sumIsingSamplesLong)
     
     allMeansDT <- data.table(sample = character(), meanSumScore = double())
-    for (i in 1:length(names(sum_Ising_samples))) {
-        tempDT <- sumIsingSamplesLong[sample == names(sum_Ising_samples)[i]]
-        meanDT <- data.table(sample = names(sum_Ising_samples)[i],
-                             meanSumScore = tempDT[, mean(sumscore)])
+    for (i in 1:length(base::names(sum_Ising_samples))) {
+        tempDT <- sumIsingSamplesLong[sample == base::names(sum_Ising_samples)[i]]
+        meanDT <- data.table(sample = base::names(sum_Ising_samples)[i],
+                             meanSumScore = tempDT[, base::mean(sumscore)])
         
-        allMeansDT <- rbind(allMeansDT, meanDT)
+        allMeansDT <- base::rbind(allMeansDT, meanDT)
     }
     
-    setorder(allMeansDT, -meanSumscore)
+    data.table::setorder(allMeansDT, -meanSumscore)
     
     orderNames <- allMeansDT[sample != "original", sample]
-    orderNames <- c("original", orderNames)
+    orderNames <- base::c("original", orderNames)
     
     sumIsingSamplesLong <- sumIsingSamplesLong %>%
-        arrange(factor(sample, levels = orderNames))
+        dplyr::arrange(base::factor(sample, levels = orderNames))
     
     return(sumIsingSamplesLong)
 }
