@@ -22,9 +22,9 @@ prepareDFforPlottingAndANOVA <- function(sum_Ising_samples) {
     sumIsingSamplesLong <- as.data.table(sumIsingSamplesLong)
     
     allMeansDT <- data.table(sample = character(), meanSumScore = double())
-    for (i in 1:length(names(dataSumScores))) {
-        tempDT <- sumIsingSamplesLong[sample == names(dataSumScores)[i]]
-        meanDT <- data.table(sample = names(dataSumScores)[i],
+    for (i in 1:length(names(sum_Ising_samples))) {
+        tempDT <- sumIsingSamplesLong[sample == names(sum_Ising_samples)[i]]
+        meanDT <- data.table(sample = names(sum_Ising_samples)[i],
                              meanSumScore = tempDT[, mean(sumscore)])
         
         allMeansDT <- rbind(allMeansDT, meanDT)
