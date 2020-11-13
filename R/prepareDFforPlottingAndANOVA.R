@@ -20,10 +20,19 @@ prepareDFforPlottingAndANOVA <- function(sum_Ising_samples) {
     }
     
     sumIsingSamplesLong <- as.data.table(sumIsingSamplesLong)
-    orderedSumIsingSamplesLong <- sumIsingSamplesLong[, .(meanSumscore = mean(sumscore)), .(sample)]
-    setorder(orderedSumIsingSamplesLong, -meanSumscore)
     
-    orderNames <- orderedSumIsingSamplesLong[sample != "original", sample]
+    allMeansDT <- data.table(sample = character(), meanSumScore = double())
+    for (i in 1:length(names(dataSumScores))) {
+        tempDT <- sumIsingSamplesLong[sample == names(dataSumScores)[i]]
+        meanDT <- data.table(sample = names(dataSumScores)[i],
+                             meanSumScore = tempDT[, mean(sumscore)])
+        
+        allMeansDT <- rbind(allMeansDT, meanDT)
+    }
+    
+    setorder(allMeansDT, -meanSumscore)
+    
+    orderNames <- allMeansDT[sample != "original", sample]
     orderNames <- c("original", orderNames)
     
     sumIsingSamplesLong <- sumIsingSamplesLong %>%
