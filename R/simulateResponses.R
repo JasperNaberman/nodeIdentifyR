@@ -1,3 +1,4 @@
+#' 
 #' Simulate Responses
 #'
 #' Simulates binary responses based on the input of network structure parameters.
@@ -12,40 +13,45 @@
 #'
 #' @examples
 #' # simulateResponses(edgeWeightMatrix, thresholdVector, "positive", 2)
+#' 
 
 simulateResponses <- function(edge_weights, thresholds, perturbation_direction, amount_of_SDs_perturbation) {
 
-    IsingSamples <- vector(mode = "list", length = ncol(edge_weights) + 1)
-    names(IsingSamples) <- c(colnames(edge_weights), "original")
+    IsingSamples <- base::vector(mode = "list",
+                                 length = base::ncol(x = edge_weights) + 1)
+    base::names(x = IsingSamples) <- base::c(base::colnames(x = edge_weights),
+                                             "original")
 
     # iterate through node, creating a dataframe with a perturbation for each iteration, effectively changing nodes one by one
-    for (i in 1:length(IsingSamples)) {
+    for (i in 1:base::length(x = IsingSamples)) {
         # sample an Ising model state with a pertubated threshold vector
-        if (i %in% 1:(length(IsingSamples) - 1)) {
+        if (i %in% 1:(base::length(x = IsingSamples) - 1)) {
             perturbation <- thresholds
 
             if (perturbation_direction == "positive") {
-                perturbation[i] <- thresholds[i] + amount_of_SDs_perturbation * stats::sd(thresholds)
+                perturbation[i] <- thresholds[i] + amount_of_SDs_perturbation * stats::sd(x = thresholds)
             } else if (perturbation_direction == "negative") {
-                perturbation[i] <- thresholds[i] - amount_of_SDs_perturbation * stats::sd(thresholds)
+                perturbation[i] <- thresholds[i] - amount_of_SDs_perturbation * stats::sd(x = thresholds)
             }
 
-            IsingModelState <- IsingSampler::IsingSampler(1000, edge_weights,
-                                                          perturbation,
-                                                          responses = c(0L, 1L))
+            IsingModelState <- IsingSampler::IsingSampler(n = 1000,
+                                                          graph = edge_weights,
+                                                          thresholds = perturbation,
+                                                          responses = base::c(0L, 1L))
             IsingSamples[[i]] <- IsingModelState
         }
 
         # sample an Ising model state with the original thresholds
-        if (i == length(IsingSamples)) {
-            IsingModelState <- IsingSampler::IsingSampler(1000, edge_weights,
-                                                          thresholds,
-                                                          responses = c(0L, 1L))
+        if (i == base::length(x = IsingSamples)) {
+            IsingModelState <- IsingSampler::IsingSampler(n = 1000,
+                                                          graph = edge_weights,
+                                                          thresholds = thresholds,
+                                                          responses = base::c(0L, 1L))
             IsingSamples[[i]] <- IsingModelState
         }
     }
 
-    namesOrder <- c("original", names(IsingSamples)[1:ncol(edge_weights)])
+    namesOrder <- base::c("original", base::names(x = IsingSamples)[1:base::ncol(x = edge_weights)])
 
     IsingSamples <- IsingSamples[namesOrder]
 

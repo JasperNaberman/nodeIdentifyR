@@ -1,3 +1,4 @@
+#' 
 #' Plot Sum Scores
 #'
 #' Plots the inputted sum scores data.frames as a lineplot with confidence intervals
@@ -9,12 +10,16 @@
 #'
 #' @examples
 #' # plotSumScores(LongFormatSumScoreDataframe)
+#' 
 
 plotSumScores <- function(healthy_sum_score_long) {
 
-    sumScoresPlot <- ggpubr::ggline(healthy_sum_score_long, x = "sample", y = "sumscore",
-                                    add = c("mean_ci"),
-                                    ylab = "Sum Score", xlab = "Threshold Iteration") +
+    sumScoresPlot <- ggpubr::ggline(data = healthy_sum_score_long,
+                                    x = "sample",
+                                    y = "sumscore",
+                                    add = base::c("mean_ci"),
+                                    ylab = "Sum Score",
+                                    xlab = "Threshold Iteration") +
         ggplot2::theme_gray()
 
     return(sumScoresPlot)
