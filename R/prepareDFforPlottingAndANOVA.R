@@ -3,7 +3,10 @@
 #'
 #' Reshape the data to long format so that it can be plotted and used in an ANOVA
 #' 
+#' @import data.table
+#' 
 #' @param sum_Ising_samples a list containing vectors of sum scores in numeric format
+#' 
 #'
 #' @return A data.frame structure in long format.
 #' @export
