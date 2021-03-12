@@ -17,5 +17,5 @@ Imports:
     stats,
     ggplot2,
     dplyr,
-    data.table,
-    base
+    base,
+    data.table
