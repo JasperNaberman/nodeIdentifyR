@@ -26,16 +26,7 @@ prepareDFforPlottingAndANOVA <- function(sum_Ising_samples) {
     
     sumIsingSamplesLong <- data.table::as.data.table(x = sumIsingSamplesLong)
     
-    allMeansDT <- data.table::data.table(sample = base::character(),
-                                         meanSumScore = base::double())
-    
-    for (i in 1:base::length(x = base::names(x = sum_Ising_samples))) {
-        tempDT <- sumIsingSamplesLong[sample == base::names(x = sum_Ising_samples)[i]]
-        meanDT <- data.table::data.table(sample = base::names(x = sum_Ising_samples)[i],
-                                         meanSumScore = tempDT[, base::mean(x = sumscore)])
-        
-        allMeansDT <- base::rbind(allMeansDT, meanDT)
-    }
+    allMeansDT <- sumIsingSamplesLong[, .(meanSumScore = base::mean(sumscore)), .(sample)]
     
     data.table::setorder(x = allMeansDT, -meanSumScore)
     
