@@ -36,7 +36,7 @@ plotSumScores <- function(sum_scores_long) {
         ggplot2::geom_point() +
         ggplot2::geom_errorbar(mapping = ggplot2::aes(ymin = sumscore - ci,
                                                       ymax = sumscore + ci),
-                               width = .1) +
+                               width = .15) +
         ggplot2::scale_x_discrete(limits = orderNames) +
         ggplot2::labs(x = "Threshold iteration",
                       y = "Sum score") +
