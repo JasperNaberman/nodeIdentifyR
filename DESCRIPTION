@@ -1,7 +1,7 @@
 Package: nodeIdentifyR
 Type: Package
 Title: Identify Important Nodes in Network Structures
-Version: 0.0.1
+Version: 0.8
 Author: c(person("Jasper", "Naberman", email = "JNABERM@uva.nl", role = c("aut", "cre")), person("Gabriela", "Lunansky", email = "g.lunansky@uva.nl", role = "aut"))
 Maintainer: Jasper Naberman <JNABERM@uva.nl>
 Description: Outline node specific target points in the prevention and intervention of critical transitions in psychopathology networks.
