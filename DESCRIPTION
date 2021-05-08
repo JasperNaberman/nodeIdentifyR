@@ -13,7 +13,7 @@ RoxygenNote: 7.1.1
 Imports:
     IsingFit,
     IsingSampler,
-    ggpubr,
+    Rmisc,
     stats,
     ggplot2,
     dplyr,
