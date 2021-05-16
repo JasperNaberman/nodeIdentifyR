@@ -5,7 +5,7 @@
 #'
 #' @param edge_weights a matrix containing edge weights of a network structure.
 #' @param thresholds a vector containing node thresholds of a network structure.
-#' @param perturbation_direction a string specifying a perturbation direction. Choose between "positive" (+) and "negative" (-).
+#' @param perturbation_type a string specifying a perturbation direction. Choose between "prevention" (+) and "intervention" (-).
 #' @param amount_of_SDs_perturbation an integer specifying with how many standard deviations of the threshold distribution to perturbate the threshold values.
 #'
 #' @return A data.frame structure containing simulated binary responses.
@@ -15,7 +15,7 @@
 #' # simulateResponses(edgeWeightMatrix, thresholdVector, "positive", 2)
 #' 
 
-simulateResponses <- function(edge_weights, thresholds, perturbation_direction, amount_of_SDs_perturbation) {
+simulateResponses <- function(edge_weights, thresholds, perturbation_type, amount_of_SDs_perturbation) {
 
     IsingSamples <- base::vector(mode = "list",
                                  length = base::ncol(x = edge_weights) + 1)
@@ -28,9 +28,9 @@ simulateResponses <- function(edge_weights, thresholds, perturbation_direction, 
         if (i %in% 1:(base::length(x = IsingSamples) - 1)) {
             perturbation <- thresholds
 
-            if (perturbation_direction == "positive") {
+            if (perturbation_type == "prevention") {
                 perturbation[i] <- thresholds[i] + amount_of_SDs_perturbation * stats::sd(x = thresholds)
-            } else if (perturbation_direction == "negative") {
+            } else if (perturbation_type == "intervention") {
                 perturbation[i] <- thresholds[i] - amount_of_SDs_perturbation * stats::sd(x = thresholds)
             }
 
