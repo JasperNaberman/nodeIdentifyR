@@ -7,7 +7,7 @@
 simulateResponses(
   edge_weights,
   thresholds,
-  perturbation_direction,
+  perturbation_type,
   amount_of_SDs_perturbation
 )
 }
