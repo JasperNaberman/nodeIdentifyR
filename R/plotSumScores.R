@@ -1,11 +1,11 @@
 #' 
 #' Plot Sum Scores
 #'
-#' Plots the inputted sum scores data.frames as a lineplot with confidence intervals
+#' Plots the inputted sum scores data.frames as a lineplot with confidence intervals and also returns the plotted values
 #'
 #' @param sum_scores_long a data.frame containing sum scores
 #'
-#' @return A ggplot line graph, including 95% confidence intervals of the mean value per threshold iteration.
+#' @return A list containing ggplot line graph object called sumScoresPlot and a data.table containing the data points that are plotted, including 95% confidence intervals of the mean value per threshold iteration.
 #' @export
 #'
 #' @examples
@@ -24,18 +24,26 @@ plotSumScores <- function(sum_scores_long) {
     orderNames <- dataSumScoresLongSummary[sample != "original", sample]
     orderNames <- base::c("original", orderNames)
     
+    data.table::setnames(dataSumScoresLongSummary,
+                         base::c("sample", "sumscore"),
+                         base::c("thresholdIteration", "meanSumscore"))
+    
+    dataSumScoresLongSummary[, ciLower := meanSumscore - ci]
+    dataSumScoresLongSummary[, ciUpper := meanSumscore + ci]
+    dataSumScoresLongSummary[, base::c("N", "sd", "se", "ci") := NULL]
+    
     dataSumScoresLongSummary <- dataSumScoresLongSummary %>%
-        dplyr::arrange(base::factor(x = sample,
+        dplyr::arrange(base::factor(x = thresholdIteration,
                                     levels = orderNames))
     
     sumScoresPlot <- ggplot2::ggplot(data = dataSumScoresLongSummary,
-                                     mapping = ggplot2::aes(x = sample,
-                                                            y = sumscore,
+                                     mapping = ggplot2::aes(x = thresholdIteration,
+                                                            y = meanSumscore,
                                                             group = 1)) +
         ggplot2::geom_line() +
         ggplot2::geom_point() +
-        ggplot2::geom_errorbar(mapping = ggplot2::aes(ymin = sumscore - ci,
-                                                      ymax = sumscore + ci),
+        ggplot2::geom_errorbar(mapping = ggplot2::aes(ymin = ciLower,
+                                                      ymax = ciUpper),
                                width = .15) +
         ggplot2::scale_x_discrete(limits = orderNames) +
         ggplot2::labs(x = "Threshold iteration",
@@ -54,5 +62,8 @@ plotSumScores <- function(sum_scores_long) {
                        panel.grid.major.y = ggplot2::element_line(colour = "grey80",
                                                                   size = .4))
     
-    return(sumScoresPlot)
+    returnList <- base::list(sumScoresPlot = sumScoresPlot,
+                             plottedInformation = dataSumScoresLongSummary)
+    
+    return(returnList)
 }
