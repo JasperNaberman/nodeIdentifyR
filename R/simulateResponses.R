@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-#' # simulateResponses(edgeWeightMatrix, thresholdVector, "positive", 2)
+#' # simulateResponses(edgeWeightMatrix, thresholdVector, "prevention", 2)
 #' 
 
 simulateResponses <- function(edge_weights, thresholds, perturbation_type, amount_of_SDs_perturbation) {
