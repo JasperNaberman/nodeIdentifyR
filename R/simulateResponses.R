@@ -34,7 +34,7 @@ simulateResponses <- function(edge_weights, thresholds, perturbation_type, amoun
                 perturbation[i] <- thresholds[i] - amount_of_SDs_perturbation * stats::sd(x = thresholds)
             }
 
-            IsingModelState <- IsingSampler::IsingSampler(n = 1000,
+            IsingModelState <- IsingSampler::IsingSampler(n = 5000,
                                                           graph = edge_weights,
                                                           thresholds = perturbation,
                                                           responses = base::c(0L, 1L))
@@ -43,7 +43,7 @@ simulateResponses <- function(edge_weights, thresholds, perturbation_type, amoun
 
         # sample an Ising model state with the original thresholds
         if (i == base::length(x = IsingSamples)) {
-            IsingModelState <- IsingSampler::IsingSampler(n = 1000,
+            IsingModelState <- IsingSampler::IsingSampler(n = 5000,
                                                           graph = edge_weights,
                                                           thresholds = thresholds,
                                                           responses = base::c(0L, 1L))
