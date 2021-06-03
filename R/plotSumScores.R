@@ -4,6 +4,7 @@
 #' Plots the inputted sum scores data.frames as a lineplot with confidence intervals and also returns the plotted values
 #'
 #' @param sum_scores_long a data.frame containing sum scores
+#' @param perturbation_type a string specifying a perturbation direction. Choose between "prevention" (+) and "intervention" (-). Should be equal to the argument passed to simulateReponses().
 #'
 #' @return A list containing ggplot line graph object called sumScoresPlot and a data.table containing the data points that are plotted, including 95% confidence intervals of the mean value per threshold iteration.
 #' @export
@@ -20,7 +21,13 @@ plotSumScores <- function(sum_scores_long) {
                                                  conf.interval = .95)
     
     dataSumScoresLongSummary <- data.table::as.data.table(dataSumScoresLongSummary)
-    data.table::setorder(x = dataSumScoresLongSummary, -sumscore)
+    
+    if (perturbation_type == "intervention") {
+        data.table::setorder(x = dataSumScoresLongSummary, sumscore)
+    } else if (perturbation_type == "prevention") {
+        data.table::setorder(x = dataSumScoresLongSummary, -sumscore)
+    }
+    
     orderNames <- dataSumScoresLongSummary[sample != "original", sample]
     orderNames <- base::c("original", orderNames)
     
