@@ -7,14 +7,15 @@
 calculateSumScores(Ising_samples)
 }
 \arguments{
-\item{Ising_samples}{a list containing dataframes with binary responses}
+\item{Ising_samples}{a list containing dataframes with binary responses in numeric format}
 }
 \value{
-a list containing vectors of sum scores
+A list containing vectors of sum scores.
 }
 \description{
 Creates a list with sum scores based on the given responses.
 }
 \examples{
 # calculateSumScores(listContainingSumScores)
+
 }

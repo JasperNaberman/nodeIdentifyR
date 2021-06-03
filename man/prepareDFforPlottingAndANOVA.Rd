@@ -7,14 +7,15 @@
 prepareDFforPlottingAndANOVA(sum_Ising_samples)
 }
 \arguments{
-\item{sum_Ising_samples}{a list containing vectors of sum scores}
+\item{sum_Ising_samples}{a list containing vectors of sum scores in numeric format}
 }
 \value{
-a data.frame object in long format
+A data.frame structure in long format.
 }
 \description{
 Reshape the data to long format so that it can be plotted and used in an ANOVA
 }
 \examples{
 # prepareDFforPlottingAndANOVA(listContainingSumScoreVectors)
+
 }

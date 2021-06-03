@@ -4,17 +4,20 @@
 \alias{plotSumScores}
 \title{Plot Sum Scores}
 \usage{
-plotSumScores(healthy_sum_score_long)
+plotSumScores(sum_scores_long)
 }
 \arguments{
-\item{healthy_sum_score_long}{a data.frame containing sum scores}
+\item{sum_scores_long}{a data.frame containing sum scores}
+
+\item{perturbation_type}{a string specifying a perturbation direction. Choose between "prevention" (+) and "intervention" (-). Should be equal to the argument passed to simulateReponses().}
 }
 \value{
-a ggline line plot
+A list containing ggplot line graph object called sumScoresPlot and a data.table containing the data points that are plotted, including 95% confidence intervals of the mean value per threshold iteration.
 }
 \description{
-Plots the inputted sum scores data.frames as a lineplot with conficence intervalss
+Plots the inputted sum scores data.frames as a lineplot with confidence intervals and also returns the plotted values
 }
 \examples{
-# plotSumScores(LongFormatSumScoreDataframe)
+# plotSumScores(sum_scores_long = LongFormatSumScoreDataframe)
+
 }

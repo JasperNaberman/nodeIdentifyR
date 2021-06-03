@@ -16,16 +16,17 @@ simulateResponses(
 
 \item{thresholds}{a vector containing node thresholds of a network structure.}
 
-\item{perturbation_direction}{a string specifying a perturbation direction. Choose between "positive" (+) and "negative" (-).}
+\item{perturbation_type}{a string specifying a perturbation direction. Choose between "prevention" (+) and "intervention" (-).}
 
 \item{amount_of_SDs_perturbation}{an integer specifying with how many standard deviations of the threshold distribution to perturbate the threshold values.}
 }
 \value{
-a data.frame containing simulated binary responses
+A data.frame structure containing simulated binary responses.
 }
 \description{
 Simulates binary responses based on the input of network structure parameters.
 }
 \examples{
-# simulateResponses(edgeWeightMatrix, thresholdVector, "positive", 2)
+# simulateResponses(edgeWeightMatrix, thresholdVector, "prevention", 2)
+
 }
