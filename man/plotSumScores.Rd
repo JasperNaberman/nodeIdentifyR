@@ -4,7 +4,7 @@
 \alias{plotSumScores}
 \title{Plot Sum Scores}
 \usage{
-plotSumScores(sum_scores_long)
+plotSumScores(sum_scores_long, perturbation_type)
 }
 \arguments{
 \item{sum_scores_long}{a data.frame containing sum scores}
