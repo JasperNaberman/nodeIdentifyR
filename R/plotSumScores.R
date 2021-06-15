@@ -1,7 +1,7 @@
 #' 
 #' Plot Sum Scores
 #'
-#' Plots the inputted sum scores data.frames as a lineplot with confidence intervals and also returns the plotted values
+#' Plots the inputted sum scores data.frames as a lineplot with confidence intervals and also returns the plotted values. Orders the plot based on value and inputted 'perturbation_type'.
 #'
 #' @param sum_scores_long a data.frame containing sum scores
 #' @param perturbation_type a string specifying a perturbation direction. Choose between "prevention" (+) and "intervention" (-). Should be equal to the argument passed to simulateReponses().
