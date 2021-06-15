@@ -13,7 +13,7 @@
 #' # plotSumScores(sum_scores_long = LongFormatSumScoreDataframe)
 #' 
 
-plotSumScores <- function(sum_scores_long) {
+plotSumScores <- function(sum_scores_long, perturbation_type) {
     
     dataSumScoresLongSummary <- Rmisc::summarySE(data = sum_scores_long,
                                                  measurevar = "sumscore",
