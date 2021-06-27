@@ -53,7 +53,7 @@ plotSumScores <- function(sum_scores_long, perturbation_type) {
                                                       ymax = ciUpper),
                                width = .15) +
         ggplot2::scale_x_discrete(limits = orderNames) +
-        ggplot2::labs(x = "Threshold iteration",
+        ggplot2::labs(x = "Symptom of which the threshold is altered",
                       y = "Sum score") +
         ggplot2::theme(axis.line = ggplot2::element_line(colour = "grey20"),
                        axis.text = ggplot2::element_text(colour = "grey20",
