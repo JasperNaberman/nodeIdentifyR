@@ -9,13 +9,13 @@ plotSumScores(sum_scores_long, perturbation_type)
 \arguments{
 \item{sum_scores_long}{a data.frame containing sum scores}
 
-\item{perturbation_type}{a string specifying a perturbation direction. Choose between "prevention" (+) and "intervention" (-). Should be equal to the argument passed to simulateReponses().}
+\item{perturbation_type}{a string specifying a perturbation direction. Choose between "aggrevating" (+) and "alleviating" (-). Should be equal to the argument passed to simulateReponses().}
 }
 \value{
 A list containing ggplot line graph object called sumScoresPlot and a data.table containing the data points that are plotted, including 95% confidence intervals of the mean value per threshold iteration.
 }
 \description{
-Plots the inputted sum scores data.frames as a lineplot with confidence intervals and also returns the plotted values
+Plots the inputted sum scores data.frames as a lineplot with confidence intervals and also returns the plotted values. Orders the plot based on value and inputted 'perturbation_type'.
 }
 \examples{
 # plotSumScores(sum_scores_long = LongFormatSumScoreDataframe)
