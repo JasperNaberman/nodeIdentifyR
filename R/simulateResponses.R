@@ -5,14 +5,14 @@
 #'
 #' @param edge_weights a matrix containing edge weights of a network structure.
 #' @param thresholds a vector containing node thresholds of a network structure.
-#' @param perturbation_type a string specifying a perturbation direction. Choose between "aggrevating" (+) and "alleviating" (-).
+#' @param perturbation_type a string specifying a perturbation direction. Choose between "aggravating" (+) and "alleviating" (-).
 #' @param amount_of_SDs_perturbation an integer specifying with how many standard deviations of the threshold distribution to perturbate the threshold values.
 #'
 #' @return A data.frame structure containing simulated binary responses.
 #' @export
 #'
 #' @examples
-#' # simulateResponses(edgeWeightMatrix, thresholdVector, "aggrevating", 2)
+#' # simulateResponses(edgeWeightMatrix, thresholdVector, "aggravating", 2)
 #' 
 
 simulateResponses <- function(edge_weights, thresholds, perturbation_type, amount_of_SDs_perturbation) {
@@ -28,7 +28,7 @@ simulateResponses <- function(edge_weights, thresholds, perturbation_type, amoun
         if (i %in% 1:(base::length(x = IsingSamples) - 1)) {
             perturbation <- thresholds
 
-            if (perturbation_type == "aggrevating") {
+            if (perturbation_type == "aggravating") {
                 perturbation[i] <- thresholds[i] + amount_of_SDs_perturbation * stats::sd(x = thresholds)
             } else if (perturbation_type == "alleviating") {
                 perturbation[i] <- thresholds[i] - amount_of_SDs_perturbation * stats::sd(x = thresholds)
